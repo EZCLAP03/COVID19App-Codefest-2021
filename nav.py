@@ -14,6 +14,7 @@ import os
 Window.size = (300, 500)
 navigation_helper = """
 Screen:
+    id: screenboi
     MDToolbar:
         id: toolbar
         pos_hint: {"top": 1}
@@ -28,7 +29,7 @@ Screen:
             id: screen_manager
 
             Screen:
-                name: "scr 1"
+                name: "scr1"
                 MDTextField:
                     id: mtf
                     hint_text: "Enter Your Destination"
@@ -47,7 +48,7 @@ Screen:
                         pos_hint: {'center_x': 0.5, 'center_y': 0.3}
                         on_press: app.show_data()
             Screen:
-                name: "scr 2"
+                name: "scr2"
 
                 MDLabel:
                     text: "Map"
@@ -79,6 +80,7 @@ Screen:
 """
 
 class DemoApp(MDApp):
+    screenboi = ObjectProperty(None)
     class ContentNavigationDrawer(BoxLayout):
         screen_manager = ObjectProperty()
         nav_drawer = ObjectProperty()
@@ -95,8 +97,9 @@ class DemoApp(MDApp):
 
     def show_data(self):
         data = main.covid19api()
+        mtf = self.screenboi.scr1.mtf.text
         for content in data['Country']:
-            if content['name'] =='India':
+            if content['name'] == mtf:
                 dialog = MDDialog(title=f'Covid 19 Cases in the area {content["Total_cases"]} \
                 \nCovid 19 Deaths in the Country {content["Total_deaths"]} \
                 \nCovid 19 Recovered in the Country {content["Total_recovered"]} \
