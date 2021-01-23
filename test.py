@@ -5,29 +5,8 @@ from kivymd.uix.button import MDRectangleFlatButton
 from kivy.lang import Builder
 import input
 from main import covid19api
+from kivymd.theming import ThemeManager
 
-toolbar_helper = """
-Screen:
-    NavigationLayout:
-        ScreenManager:
-            Screen:
-                BoxLayout:
-                    orientation: 'vertical'
-                    MDToolbar:
-                        title: "Covid App"
-                        height: 50
-                        elevation: 3
-                        left_action_items: [['menu', lambda x: nav_drawer.set_state()]]
-                    Widget:
-        MDNavigationDrawer:
-            width: 230
-            id: nav_drawer
-
-                   
-
-
-
-"""
 
 
 
@@ -37,12 +16,13 @@ class CovidApp(MDApp):
     def build(self):
         self.theme_cls.primary_palette = "Blue"
         screen = Screen()
-        self.theme_cls.theme_style = "Dark"
+        theme_cls = ThemeManager()
+        self.theme_cls.theme_style = "Light"
         self.user = Builder.load_string(input.user)
         button = MDRectangleFlatButton(text='Show',
                                        pos_hint={'center_x': 0.5, 'center_y': 0.3},
                                        on_release=self.show_data)
-        screen = Builder.load_string(toolbar_helper)
+
         screen.add_widget(self.user)
         screen.add_widget(button)
         return screen

@@ -1,0 +1,22 @@
+NavigationLayout:
+    MDNavigationDrawer:
+    NavigationDrawerIconButton:
+        text: "Covid Statistics"
+        on_release:
+            screen_manager.current = "covid"
+    NavigationDrawerIconButton:
+        text: "Map"
+        on_release:
+            screen_manager.current = "map"
+
+
+    ScreenManager:
+        Screen:
+            name: "covid"
+            MDLabel
+                text: "Covid Statistics"
+
+        Screen:
+            name: "map"
+            MDLabel
+                text: "Map"
