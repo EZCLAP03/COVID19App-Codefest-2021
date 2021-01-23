@@ -4,28 +4,30 @@ from kivy.core.window import Window
 
 Window.size = (300, 500)
 
-navigation_helper = """
+toolbar_helper = """
 Screen:
-    BoxLayout: 
-        orientation: 'vertical'
-        MDToolbar: 
-            title: 'Covid App'
-            left_action_items: [{"menu",lambda_x: app.bar_draw()}]
-        MDLabel:
-            text: 'Cases near you'
-            halign: 'center'
-            
+    NavigationLayout:
+        ScreenManager:
+            Screen:
+                BoxLayout:
+                    orientation: 'vertical'
+                    MDToolbar:
+                        title: "Covid App"
+                        elevation: 10
+                        left_action_items: [['menu', lambda x: tool_drawer.toggle_tool_drawer()]]
+                    Widget:
+        MDNavigationDrawer:
+            id: tool_drawer
 """
 
 
 class CovidApp(MDApp):
 
     def build(self):
-        screen = Builder.load_string(navigation_helper)
+        screen = Builder.load_string(toolbar_helper)
         return screen
 
-    def bar_draw(self):
-        print('Navigation')
-
-
 CovidApp().run()
+
+
+
