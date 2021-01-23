@@ -1,13 +1,16 @@
 from kivymd.app import MDApp
-from kivymd.uix.screen import Screen
 from kivy.lang import Builder
+from kivy.core.window import Window
 
-navigation_bar = """
+Window.size = (300, 500)
+
+navigation_helper = """
 Screen:
     BoxLayout: 
         orientation: 'vertical'
         MDToolbar: 
             title: 'Covid App'
+            left_action_items: [{"menu",lambda_x: app.bar_draw()}]
         MDLabel:
             text: 'Cases near you'
             halign: 'center'
@@ -18,8 +21,11 @@ Screen:
 class CovidApp(MDApp):
 
     def build(self):
-        screen = Builder.load_string(navigation_bar)
+        screen = Builder.load_string(navigation_helper)
         return screen
+
+    def bar_draw(self):
+        print('Navigation')
 
 
 CovidApp().run()
