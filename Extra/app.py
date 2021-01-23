@@ -1,11 +1,10 @@
-
 from kivymd.app import MDApp
 from kivymd.uix.screen import Screen
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDRectangleFlatButton
 from kivy.lang import Builder
 import input
-from main import
+from main import covid19api
 
 
 class CovidApp(MDApp):
@@ -23,14 +22,14 @@ class CovidApp(MDApp):
 
     def show_data(self, obj):
         print(self.country.text)
-<<<<<<< Updated upstream
-=======
-        for content in data['Country']:
-            if content['name'] == self.country.text:
-                dialog = MDDialog(text=content["Total_cases"])
-                dialog.open()
-                print(content["Total_cases"])
->>>>>>> Stashed changes
+
+        def show_data(self, obj):
+            data = covid19api()
+            for content in data['Country']:
+                if content['name'] == self.country.text:
+                    dialog = MDDialog(text=content["Total_cases"])
+                    dialog.open()
+                    print(content["Total_cases"])
 
 
 CovidApp().run()

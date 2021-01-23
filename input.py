@@ -1,4 +1,4 @@
-country = """
+user = """
 MDTextField:
     hint_text: "Enter Your Destination"
     helper_text: "or your area"
