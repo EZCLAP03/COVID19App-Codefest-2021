@@ -20,7 +20,7 @@ Screen:
                         left_action_items: [['menu', lambda x: nav_drawer.set_state()]]
                     Widget:
         MDNavigationDrawer:
-            width: 240
+            width: 230
             id: nav_drawer
 
                    
