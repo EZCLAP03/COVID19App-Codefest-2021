@@ -14,8 +14,5 @@ def covid19api():
     data = json.loads(r.text)
     return data
 
-lmao = covid19api()
-print(lmao)
-
 
 
