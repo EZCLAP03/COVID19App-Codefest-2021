@@ -8,10 +8,6 @@ from main import covid19api
 from kivymd.theming import ThemeManager
 
 
-
-
-
-
 class CovidApp(MDApp):
     def build(self):
         self.theme_cls.primary_palette = "Blue"
