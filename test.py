@@ -6,6 +6,29 @@ from kivy.lang import Builder
 import input
 from main import covid19api
 
+toolbar_helper = """
+Screen:
+    NavigationLayout:
+        ScreenManager:
+            Screen:
+                BoxLayout:
+                    orientation: 'vertical'
+                    MDToolbar:
+                        title: "Covid App"
+                        elevation: 10
+                        left_action_items: [['menu', lambda x: nav_drawer.set_state()]]
+                    Widget:
+        MDNavigationDrawer:
+            id: nav_drawer
+
+            BoxLayout:
+                orientation: 'vertical'
+                   
+
+
+
+"""
+
 
 class CovidApp(MDApp):
     def build(self):
@@ -16,6 +39,7 @@ class CovidApp(MDApp):
         button = MDRectangleFlatButton(text='Show',
                                        pos_hint={'center_x': 0.5, 'center_y': 0.3},
                                        on_release=self.show_data)
+        screen = Builder.load_string(toolbar_helper)
         screen.add_widget(self.user)
         screen.add_widget(button)
         return screen
