@@ -25,7 +25,12 @@ class CovidApp(MDApp):
         data = covid19api()
         for content in data['Country']:
             if content['name'] == self.user.text:
-                dialog = MDDialog(title='Covid 19 cases in your preferred area', text=content["Total_cases"])
+                dialog = MDDialog(title=f'Covid 19 Cases in the area {content["Total_cases"]} \
+                    \nCovid 19 Deaths in the Country {content["Total_deaths"]} \
+                    \nCovid 19 Recovered in the Country {content["Total_recovered"]} \
+                    \nCovid 19 Active cases in the Country {content["Active_cases"]} \
+                    \nCovid 19 Serious critical cases in the Country {content["Serious_critical"]}  \
+                    \nTotal Population of the Country {content["Total_population"]}')
                 dialog.open()
                 print(content["Total_cases"])
 
