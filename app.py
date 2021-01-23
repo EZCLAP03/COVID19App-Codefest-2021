@@ -1,8 +1,10 @@
+
 from kivymd.app import MDApp
 from kivymd.uix.screen import Screen
 from kivymd.uix.button import MDRectangleFlatButton
 from kivy.lang import Builder
 import input
+from main import
 
 
 class CovidApp(MDApp):
