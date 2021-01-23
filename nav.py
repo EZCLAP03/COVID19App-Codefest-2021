@@ -97,7 +97,7 @@ class DemoApp(MDApp):
 
     def show_data(self):
         data = main.covid19api()
-        mtf = self.screenboi.scr1.mtf.text
+        mtf = self.root.ids.mtf.text
         for content in data['Country']:
             if content['name'] == mtf:
                 dialog = MDDialog(title=f'Covid 19 Cases in the area {content["Total_cases"]} \
