@@ -4,11 +4,26 @@ import kivy
 from kivy.app import App 
 from kivy.uix.label import Label 
 
-def covid19api():
-    params = {
-    "api_key": "txWWHovibbxi",
-    "format": "json"
-    }
-    r = requests.get('https://www.parsehub.com/api/v2/projects/tTnALN6Fj0H0/last_ready_run/data', params=params)
-    data = json.loads(r.text)
-    return data
+params = {
+  "api_key": "txWWHovibbxi",
+  "format": "json"
+}
+r = requests.get('https://www.parsehub.com/api/v2/projects/tTnALN6Fj0H0/last_ready_run/data', params=params)
+
+Country = input('enter country ')
+
+data = json.loads(r.text)
+with open('countries.json') as f:
+  countries = json.load(f)
+
+for content in data['Country']:
+  if content['name'] == Country:
+    print(content)
+
+
+weather = ''
+weather = countries[Country]
+
+response = requests.get('http://api.openweathermap.org/data/2.5/weather?appid=4af162d6114fcf57f692885c1ba40863&q=' + weather)
+CountryWeather = response.json()
+print(CountryWeather)
