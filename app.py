@@ -22,11 +22,11 @@ Screen:
                 orientation: 'vertical'
                 
                 MDLabel:
-                    text: Username
-                    font_style: 'Button1'
+                    text: 'Caption'
+                    font_style: 'Button'
                 MDLabel:
-                    text: Location
-                    font_style: 'Button1'
+                    text: 'Caption'
+                    font_style: 'Button'
 """
 
 
