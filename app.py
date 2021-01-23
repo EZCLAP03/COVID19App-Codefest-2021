@@ -13,7 +13,19 @@ Screen:
                         elevation: 10
                         left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
                     Widget:
-                    
+    MDTextFieldRound:
+        size_hint_x: None
+        width: "100dp"
+        id: Arrival
+        hint_text: "Departure" 
+        pos_hint: {"center_x": 0.75, "center_y": 0.8}
+
+    MDTextFieldRound:
+        size_hint_x: None 
+        width: "100dp"
+        id: Arrival
+        hint_text: "Arrival" 
+        pos_hint: {"center_x": 0.25, "center_y": 0.8}                
         
         MDNavigationDrawer:
             id: nav_drawer
@@ -22,11 +34,13 @@ Screen:
                 orientation: 'vertical'
                 
                 MDLabel:
-                    text: 'Caption'
-                    font_style: 'Button'
+                    text: 'Username'
+                    font_style: 'Caption'
                 MDLabel:
-                    text: 'Caption'
-                    font_style: 'Button'
+                    text: 'Location'
+                    font_style: 'Caption'
+                    
+                    
 """
 
 
