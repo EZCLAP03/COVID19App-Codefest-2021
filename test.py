@@ -15,19 +15,22 @@ Screen:
                     orientation: 'vertical'
                     MDToolbar:
                         title: "Covid App"
-                        elevation: 10
+                        height: 50
+                        elevation: 3
                         left_action_items: [['menu', lambda x: nav_drawer.set_state()]]
                     Widget:
         MDNavigationDrawer:
+            width: 240
             id: nav_drawer
 
-            BoxLayout:
-                orientation: 'vertical'
                    
 
 
 
 """
+
+
+
 
 
 class CovidApp(MDApp):
