@@ -14,20 +14,19 @@ Screen:
                     MDToolbar:
                         title: "Covid App"
                         elevation: 10
-                        left_action_items: [['menu', lambda x: tool_drawer.toggle_tool_drawer()]]
+                        left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
                     Widget:
         MDNavigationDrawer:
-            id: tool_drawer
+            id: nav_drawer
 """
 
 
 class CovidApp(MDApp):
 
     def build(self):
+
         screen = Builder.load_string(toolbar_helper)
         return screen
 
+
 CovidApp().run()
-
-
-
