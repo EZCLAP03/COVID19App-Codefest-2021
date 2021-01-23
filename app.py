@@ -3,16 +3,6 @@ from kivy.lang import Builder
 
 toolbar_helper = """
 Screen:
-    NavigationLayout:
-        ScreenManager:
-            Screen:
-                BoxLayout:
-                    orientation: 'vertical'
-                    MDToolbar:
-                        title: "Covid App"
-                        elevation: 10
-                        left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
-                    Widget:
     MDTextFieldRound:
         size_hint_x: None
         width: "100dp"
@@ -25,8 +15,18 @@ Screen:
         width: "100dp"
         id: Arrival
         hint_text: "Arrival" 
-        pos_hint: {"center_x": 0.25, "center_y": 0.8}                
+        pos_hint: {"center_x": 0.25, "center_y": 0.8}       
         
+    NavigationLayout:
+        ScreenManager:
+            Screen:
+                BoxLayout:
+                    orientation: 'vertical'
+                    MDToolbar:
+                        title: "Covid App"
+                        elevation: 10
+                        left_action_items: [['menu', lambda x: nav_drawer.set_state()]]
+                    Widget:
         MDNavigationDrawer:
             id: nav_drawer
             
@@ -38,7 +38,8 @@ Screen:
                     font_style: 'Caption'
                 MDLabel:
                     text: 'Location'
-                    font_style: 'Caption'
+                    font_style: 'Caption'         
+        
                     
                     
 """
