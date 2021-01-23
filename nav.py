@@ -14,7 +14,6 @@ import os
 Window.size = (300, 500)
 navigation_helper = """
 Screen:
-    id: screenboi
     MDToolbar:
         id: toolbar
         pos_hint: {"top": 1}
@@ -29,7 +28,7 @@ Screen:
             id: screen_manager
 
             Screen:
-                name: "scr1"
+                name: "scr 1"
                 MDTextField:
                     id: mtf
                     hint_text: "Enter Your Destination"
@@ -40,15 +39,15 @@ Screen:
                     pos_hint:{'center_x': 0.5, 'center_y': 0.5}
                     size_hint_x:None
                     width:250
-                
-                MDBoxLayout:
-                    MDRectangleFlatButton:
-                        id: 'amulcool'
-                        text: "show"
-                        pos_hint: {'center_x': 0.5, 'center_y': 0.3}
-                        on_press: app.show_data()
+
+
+                MDRectangleFlatButton:
+                    id: 'amulcool'
+                    text: "show"
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+                    on_press: app.show_data()
             Screen:
-                name: "scr2"
+                name: "scr 2"
 
                 MDLabel:
                     text: "Map"
@@ -79,8 +78,10 @@ Screen:
 
 """
 
+
 class DemoApp(MDApp):
     screenboi = ObjectProperty(None)
+
     class ContentNavigationDrawer(BoxLayout):
         screen_manager = ObjectProperty()
         nav_drawer = ObjectProperty()
