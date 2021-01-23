@@ -5,6 +5,11 @@ from kivy.properties import ObjectProperty
 from kivymd.theming import ThemableBehavior
 from kivymd.uix.list import MDList
 from kivymd.app import MDApp
+from kivymd.uix.button import MDRectangleFlatButton
+import main
+from kivymd.uix.dialog import MDDialog
+from kivymd.uix.screen import MDScreen
+import os
 
 Window.size = (300, 500)
 navigation_helper = """
@@ -25,6 +30,7 @@ Screen:
             Screen:
                 name: "scr 1"
                 MDTextField:
+                    id: mtf
                     hint_text: "Enter Your Destination"
                     helper_text: "or your area"
                     helper_text_mode: "on_focus"
@@ -32,13 +38,14 @@ Screen:
                     icon_right_color: app.theme_cls.primary_color
                     pos_hint:{'center_x': 0.5, 'center_y': 0.5}
                     size_hint_x:None
-                    width:300
+                    width:250
                 
-                MDRectangleFlatButton: 
-                    text: 'Show'
-                    pos_hint: {'center_x': 0.5, 'center_y': 0.3}
-                    on_release: self.show_data
-
+                MDBoxLayout:
+                    MDRectangleFlatButton:
+                        id: 'amulcool'
+                        text: "show"
+                        pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+                        on_press: app.show_data()
             Screen:
                 name: "scr 2"
 
@@ -71,7 +78,6 @@ Screen:
 
 """
 
-
 class DemoApp(MDApp):
     class ContentNavigationDrawer(BoxLayout):
         screen_manager = ObjectProperty()
@@ -86,6 +92,19 @@ class DemoApp(MDApp):
 
     def on_start(self):
         pass
+
+    def show_data(self):
+        data = main.covid19api()
+        for content in data['Country']:
+            if content['name'] =='India':
+                dialog = MDDialog(title=f'Covid 19 Cases in the area {content["Total_cases"]} \
+                \nCovid 19 Deaths in the Country {content["Total_deaths"]} \
+                \nCovid 19 Recovered in the Country {content["Total_recovered"]} \
+                \nCovid 19 Active cases in the Country {content["Active_cases"]} \
+                \nCovid 19 Serious critical cases in the Country {content["Serious_critical"]}  \
+                \nTotal Population of the Country {content["Total_population"]}')
+                dialog.open()
+                print(content["Total_cases"])
 
 
 DemoApp().run()

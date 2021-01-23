@@ -13,7 +13,7 @@ class CovidApp(MDApp):
         self.theme_cls.primary_palette = "Blue"
         screen = Screen()
         theme_cls = ThemeManager()
-        self.theme_cls.theme_style = "Light"
+        self.theme_cls.theme_style = "Dark"
         self.user = Builder.load_string(input.user)
         button = MDRectangleFlatButton(text='Show',
                                        pos_hint={'center_x': 0.5, 'center_y': 0.3},
