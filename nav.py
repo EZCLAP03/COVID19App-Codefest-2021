@@ -11,7 +11,7 @@ from kivymd.uix.dialog import MDDialog
 from kivymd.uix.screen import MDScreen
 import os
 
-Window.size = (300, 500)
+
 navigation_helper = """
 Screen:
     MDToolbar:
