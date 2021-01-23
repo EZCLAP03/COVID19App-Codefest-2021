@@ -17,3 +17,12 @@ data = json.loads(r.text)
 for content in data['Country']:
   if content['name'] == Country:
     print(content)
+
+
+weather = ''
+if Country == 'India':
+    weather = "Bangalore"
+
+response = requests.get('http://api.openweathermap.org/data/2.5/weather?appid=4af162d6114fcf57f692885c1ba40863&q=' + weather)
+CountryWeather = response.json()
+print(CountryWeather)
