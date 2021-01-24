@@ -93,21 +93,21 @@ Screen:
 
                         TwoLineListItem:
                             text: "Covid19 Statistics"
-                            secondary_text: "Check the number of Covid cases and other helpful data for each country"
+                            secondary_text: "Check the number of COVID cases"
                             on_press:
                                 nav_drawer.set_state("close")
                                 screen_manager.current = "scr 1"
 
                         TwoLineListItem:
                             text: "Map"
-                            secondary_text: "View the worldmap with the major COVID hotspots marked"
+                            secondary_text: "View the World Map"
                             on_press:
                                 nav_drawer.set_state("close")
                                 screen_manager.current = "scr 2"
                         
                         TwoLineListItem:
                             text: "Weather Statistics"
-                            secondary_text: "Check the weather for whatever destinations you have in mind!"
+                            secondary_text: "Check the weather"
                             on_press:
                                 nav_drawer.set_state("close")
                                 screen_manager.current = "scr 3"
