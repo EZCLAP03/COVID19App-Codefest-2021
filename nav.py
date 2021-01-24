@@ -156,7 +156,7 @@ class DemoApp(MDApp):
                                   size_hint_x=0.9)
                 dialog.open()
                 print(content["Total_cases"])
-    
+
     def show_data2(self):
         data = main.weatherapi()
         mtf2 = self.root.ids.mtf2.text
@@ -172,6 +172,6 @@ class DemoApp(MDApp):
 
         elif self.theme_cls.theme_style == "Dark":
             self.theme_cls.theme_style = "Light"
-            
+
 
 DemoApp().run()
