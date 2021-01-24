@@ -10,7 +10,7 @@ import main
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.screen import MDScreen
 import os
-
+from kivy_garden.mapview import MapView
 
 navigation_helper = """
 Screen:
@@ -34,7 +34,7 @@ Screen:
                     hint_text: "Enter Your Destination"
                     helper_text: "or your area"
                     helper_text_mode: "on_focus"
-                    icon_right: "menu"
+                    icon_right: "android"
                     icon_right_color: app.theme_cls.primary_color
                     pos_hint:{'center_x': 0.5, 'center_y': 0.5}
                     size_hint_x:None
@@ -47,11 +47,38 @@ Screen:
                     pos_hint: {'center_x': 0.5, 'center_y': 0.4}
                     on_press: app.show_data()
             Screen:
-                name: "scr 2"
+                name: 'scr 2'
+                MapView:
+                    id: map_view
+                    zoom: 10
+                    lat: 77.59
+                    lon: 12.97
 
-                MDLabel:
-                    text: "Map"
-                    halign: "center"
+                MDRectangleFlatButton:
+                    text: "Quit"
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+                    on_release: screen_manager.current = "scr 1"
+
+            Screen:
+                name: 'scr 3'
+                MDTextField:
+                    id: mtf2
+                    hint_text: "Enter Your Region"
+                    helper_text: "or your area"
+                    helper_text_mode: "on_focus"
+                    icon_right: "android"
+                    icon_right_color: app.theme_cls.primary_color
+                    pos_hint:{'center_x': 0.5, 'center_y': 0.5}
+                    size_hint_x:None
+                    width:250
+
+                MDRectangleFlatButton:
+                    id: 'amulcool2'
+                    text: "show"
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+                    on_press: app.show_data2()
+
+
 
         MDNavigationDrawer:
             id: nav_drawer
@@ -64,17 +91,22 @@ Screen:
                     MDList:
 
                         OneLineListItem:
-                            text: "Screen 1"
+                            text: "Covid19 Statistics"
                             on_press:
                                 nav_drawer.set_state("close")
                                 screen_manager.current = "scr 1"
 
                         OneLineListItem:
-                            text: "Screen 2"
+                            text: "Map"
                             on_press:
                                 nav_drawer.set_state("close")
                                 screen_manager.current = "scr 2"
-
+                        
+                        OneLineListItem:
+                            text: "Weather Statistics"
+                            on_press:
+                                nav_drawer.set_state("close")
+                                screen_manager.current = "scr 3"
 
 """
 
@@ -109,6 +141,15 @@ class DemoApp(MDApp):
                 \nTotal Population of the Country {content["Total_population"]}')
                 dialog.open()
                 print(content["Total_cases"])
-
+    
+    def show_data2(self):
+        data = main.weatherapi()
+        mtf2 = self.root.ids.mtf2.text
+        for content in data['Country']:
+            if mtf2 in content['name']:
+                dialog = MDDialog(title=content['Temperature'])
+                dialog.open()
+                print(content)
+            
 
 DemoApp().run()

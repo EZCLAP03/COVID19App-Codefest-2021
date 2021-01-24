@@ -25,9 +25,5 @@ def weatherapi():
     data2 = json.loads(r2.text)
     return data2
 
-lol = weatherapi()
-for content in lol['Country']:
-    if "Australia" in content['name']:
-        print(content)
 
 
