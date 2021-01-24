@@ -54,6 +54,11 @@ Screen:
                     zoom: 2
                     lat: 12.97
                     lon: 77.59
+                    MapMarkerPopup:
+                        id: map_view_marker 
+                        lat: 10
+                        lon: 10
+                        source: 'newlocation.png'
 
                 MDRectangleFlatButton:
                     text: "Quit"
