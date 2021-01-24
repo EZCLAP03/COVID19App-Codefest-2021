@@ -159,10 +159,16 @@ class DemoApp(MDApp):
 
     def show_data2(self):
         data = main.weatherapi()
+        colour = "000000"
+        if self.theme_cls.theme_style == "Dark":
+            colour = "FFFFFF"
+        elif self.theme_cls.theme_style == "Light":
+            colour = "000000"
         mtf2 = self.root.ids.mtf2.text
         for content in data['Country']:
             if mtf2 in content['name']:
-                dialog = MDDialog(title=content['Temperature'])
+                dialog = MDDialog(title=f"[color={colour}]{content['name']}: {content['Temperature']}[/color]",
+                                  size_hint_x=0.9)
                 dialog.open()
                 print(content)
 
