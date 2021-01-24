@@ -9,6 +9,8 @@ import main
 from kivymd.uix.dialog import MDDialog
 from kivy_garden.mapview import MapView
 
+# Some of the most unnecessary stuff ive ever seen
+
 navigation_helper = """
 Screen:
     MDToolbar:
@@ -139,7 +141,7 @@ class DemoApp(MDApp):
                 \nTotal Population of the Country {content["Total_population"]}')
                 dialog.open()
                 print(content["Total_cases"])
-    
+
     def show_data2(self):
         data = main.weatherapi()
         mtf2 = self.root.ids.mtf2.text
@@ -148,6 +150,6 @@ class DemoApp(MDApp):
                 dialog = MDDialog(title=content['Temperature'])
                 dialog.open()
                 print(content)
-            
+
 
 DemoApp().run()
