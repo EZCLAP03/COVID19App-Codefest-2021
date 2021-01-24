@@ -18,7 +18,7 @@ Screen:
         id: toolbar
         pos_hint: {"top": 1}
         elevation: 10
-        title: "Spectral Bat"
+        title: "Travelzie"
         left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
 
     NavigationLayout:
