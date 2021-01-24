@@ -12,6 +12,7 @@ from kivymd.uix.screen import MDScreen
 import os
 from kivy_garden.mapview import MapView
 
+Window.size = (400, 720)
 navigation_helper = """
 Screen:
     MDToolbar:
@@ -90,23 +91,31 @@ Screen:
                 ScrollView:
                     MDList:
 
-                        OneLineListItem:
+                        TwoLineListItem:
                             text: "Covid19 Statistics"
+                            secondary_text: "Check the number of Covid cases and other helpful data for each country"
                             on_press:
                                 nav_drawer.set_state("close")
                                 screen_manager.current = "scr 1"
 
-                        OneLineListItem:
+                        TwoLineListItem:
                             text: "Map"
+                            secondary_text: "View the worldmap with the major COVID hotspots marked"
                             on_press:
                                 nav_drawer.set_state("close")
                                 screen_manager.current = "scr 2"
                         
-                        OneLineListItem:
+                        TwoLineListItem:
                             text: "Weather Statistics"
+                            secondary_text: "Check the weather for whatever destinations you have in mind!"
                             on_press:
                                 nav_drawer.set_state("close")
                                 screen_manager.current = "scr 3"
+                        
+                        OneLineListItem:
+                            text: 'Toggle theme'
+                            on_press:
+                                app.toggle_theme()
 
 """
 
@@ -133,12 +142,18 @@ class DemoApp(MDApp):
         mtf = self.root.ids.mtf.text
         for content in data['Country']:
             if content['name'] == mtf:
-                dialog = MDDialog(title=f'Covid 19 Cases in the area {content["Total_cases"]} \
-                \nCovid 19 Deaths in the Country {content["Total_deaths"]} \
-                \nCovid 19 Recovered in the Country {content["Total_recovered"]} \
-                \nCovid 19 Active cases in the Country {content["Active_cases"]} \
-                \nCovid 19 Serious critical cases in the Country {content["Serious_critical"]}  \
-                \nTotal Population of the Country {content["Total_population"]}')
+                colour = "000000"
+                if self.theme_cls.theme_style == "Dark":
+                    colour = "FFFFFF"
+                elif self.theme_cls.theme_style == "Light":
+                    colour = "000000"
+                dialog = MDDialog(title=f'[color={colour}]Covid 19 Cases in the area: {content["Total_cases"]} \
+                \nCovid 19 Deaths in the Country: {content["Total_deaths"]} \
+                \nCovid 19 Recovered in the Country: {content["Total_recovered"]} \
+                \nCovid 19 Active cases in the Country: {content["Active_cases"]} \
+                \nCovid 19 Serious critical cases in the Country: {content["Serious_critical"]}  \
+                \nTotal Population of the Country: {content["Total_population"]}[/color]',
+                                  size_hint_x=0.9)
                 dialog.open()
                 print(content["Total_cases"])
     
@@ -150,6 +165,13 @@ class DemoApp(MDApp):
                 dialog = MDDialog(title=content['Temperature'])
                 dialog.open()
                 print(content)
+
+    def toggle_theme(self):
+        if self.theme_cls.theme_style == "Light":
+            self.theme_cls.theme_style = "Dark"
+
+        elif self.theme_cls.theme_style == "Dark":
+            self.theme_cls.theme_style = "Light"
             
 
 DemoApp().run()
