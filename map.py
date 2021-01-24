@@ -1,4 +1,4 @@
-from kivy_garden.mapview import MapView
+from kivy_garden.mapview import MapView, MapMarker
 from kivymd.app import MDApp
 
 
