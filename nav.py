@@ -50,9 +50,9 @@ Screen:
                 name: 'scr 2'
                 MapView:
                     id: map_view
-                    zoom: 10
-                    lat: 77.59
-                    lon: 12.97
+                    zoom: 2
+                    lat: 12.97
+                    lon: 77.59
 
                 MDRectangleFlatButton:
                     text: "Quit"
