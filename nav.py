@@ -5,7 +5,7 @@ from kivy.properties import ObjectProperty
 from kivymd.theming import ThemableBehavior
 from kivymd.uix.list import MDList
 from kivymd.app import MDApp
-from kivymd.uix.button import MDRectangleFlatButton
+from kivymd.uix.button import MDRectangleFlatButton, MDFlatButton
 import main
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.screen import MDScreen
@@ -147,14 +147,14 @@ class DemoApp(MDApp):
                     colour = "FFFFFF"
                 elif self.theme_cls.theme_style == "Light":
                     colour = "000000"
-                dialog = MDDialog(title=f'[color={colour}]Covid 19 Cases in the area: {content["Total_cases"]} \
+                self.dialog = MDDialog(title=f'[color={colour}]Covid 19 Cases in the area: {content["Total_cases"]} \
                 \nCovid 19 Deaths in the Country: {content["Total_deaths"]} \
                 \nCovid 19 Recovered in the Country: {content["Total_recovered"]} \
                 \nCovid 19 Active cases in the Country: {content["Active_cases"]} \
                 \nCovid 19 Serious critical cases in the Country: {content["Serious_critical"]}  \
                 \nTotal Population of the Country: {content["Total_population"]}[/color]',
-                                  size_hint_x=0.9)
-                dialog.open()
+                                  size_hint_x=0.9, buttons=[MDFlatButton(text='Close', on_release=self.close_dialog)])
+                self.dialog.open()
                 print(content["Total_cases"])
 
     def show_data2(self):
@@ -167,9 +167,10 @@ class DemoApp(MDApp):
         mtf2 = self.root.ids.mtf2.text
         for content in data['Country']:
             if mtf2 in content['name']:
-                dialog = MDDialog(title=f"[color={colour}]{content['name']}: {content['Temperature']}[/color]",
-                                  size_hint_x=0.9)
-                dialog.open()
+                self.dialog = MDDialog(title=f"[color={colour}]{content['name']}: {content['Temperature']}[/color]",
+                                  size_hint_x=0.9,  buttons=[MDFlatButton(text='Close', on_release=self.close_dialog)])
+                self.dialog.open()
+                return self.dialog
                 print(content)
 
     def toggle_theme(self):
@@ -179,5 +180,7 @@ class DemoApp(MDApp):
         elif self.theme_cls.theme_style == "Dark":
             self.theme_cls.theme_style = "Light"
 
+    def close_dialog(self, obj):
+        self.dialog.dismiss()
 
 DemoApp().run()
