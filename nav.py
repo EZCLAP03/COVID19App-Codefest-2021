@@ -5,11 +5,8 @@ from kivy.properties import ObjectProperty
 from kivymd.theming import ThemableBehavior
 from kivymd.uix.list import MDList
 from kivymd.app import MDApp
-from kivymd.uix.button import MDRectangleFlatButton
 import main
 from kivymd.uix.dialog import MDDialog
-from kivymd.uix.screen import MDScreen
-import os
 from kivy_garden.mapview import MapView
 
 navigation_helper = """
@@ -53,6 +50,7 @@ Screen:
                     zoom: 2
                     lat: 12.97
                     lon: 77.59
+                
 
                 MDRectangleFlatButton:
                     text: "Quit"
